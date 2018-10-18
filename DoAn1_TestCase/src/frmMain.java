@@ -28,7 +28,21 @@ import javax.swing.JScrollPane;
 public class frmMain implements ActionListener {
 
 
+	/*
+	 *	Em xin lỗi Thầy, em biết code ở project này dù em đã
+	 *	cố gắng comment cẩn thận, nhưng nhìn vào cũng rất rối.
+	 *	Em đã cố gắng làm cho clear nhất có thể. Nhưng khi viết
+	 *	tính năng mới. Em không sửa cái cũ mà chỉ dám viết thêm
+	 *	các function và khai báo thêm rất nhiều variables khác mà
+	 *	biết rằng nó dư thừa vì số lượng code xây dựng đã quá lớn
+	 *	em biết nếu e nhúng code mới vào cái project mà e đã viết 
+	 * 	cách đây 1 tháng nó sẽ error luôn mọi thứ.
+	 *	Em hứa, kết thúc project này, em sẽ cố gắng tối ưu code lại.
+	 *	Vì để đảm bảo project chạy tốt em đã làm hại đến sức khỏe của Thầy
+	 *	khi đọc code rồi. Hy vọng thầy giơ cao đánh khẽ.
+	 */
 
+	public String DotNetPath = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319";
 	private JFrame frmTestCase;
 	private JPanel nullLayout;
 	private JTextPane txtPaneExecuteResult;
@@ -44,14 +58,12 @@ public class frmMain implements ActionListener {
 	private JTextField txtOutputTestCase;
 
 	private String [] PATH;
-	private JCheckBox chkChamNhieuNguoi;
 
 	private JCheckBox chckbxC_1;
 	private JCheckBox chckbxC;
 
 	private JPanel pnBrowse;
 	private JPanel pnConfig;
-	private JCheckBox chkChamMotBai;
 	private JCheckBox chkFileSource;
 	private JCheckBox chkMoiFileSourceCoThuMucRieng;
 	private JPanel pnThuMuc;
@@ -113,8 +125,8 @@ public class frmMain implements ActionListener {
 		isFirstExcute = true;
 
 		frmTestCase = new JFrame();
-		frmTestCase.setTitle("\r\n");
-		frmTestCase.setBounds(100, 100, 1116, 759);
+		frmTestCase.setTitle("Chấm file cpp và cs");
+		frmTestCase.setBounds(100, 100, 829, 759);
 		frmTestCase.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// tạo 1 nullLayout để đặt các đối tượng một cách tự do
@@ -176,21 +188,11 @@ public class frmMain implements ActionListener {
 
 		pnConfig = new JPanel();
 		pnConfig.setLayout(null);
-		pnConfig.setBounds(23, 50, 508, 70);
+		pnConfig.setBounds(23, 37, 310, 70);
 		nullLayout.add(pnConfig);
 
-		chkChamNhieuNguoi = new JCheckBox("Chấm nhiều bài");
-		chkChamNhieuNguoi.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		chkChamNhieuNguoi.setBounds(8, 39, 162, 25);
-		pnConfig.add(chkChamNhieuNguoi);
-
-		chkChamMotBai = new JCheckBox("Chấm một bài (mặc định)");
-		chkChamMotBai.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		chkChamMotBai.setBounds(8, 9, 221, 25);
-		pnConfig.add(chkChamMotBai);
-
 		pnThuMuc = new JPanel();
-		pnThuMuc.setBounds(221, 9, 292, 56);
+		pnThuMuc.setBounds(12, 13, 292, 56);
 		pnConfig.add(pnThuMuc);
 		pnThuMuc.setLayout(null);
 
@@ -205,14 +207,14 @@ public class frmMain implements ActionListener {
 		chkMoiFileSourceCoThuMucRieng.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 
 		pnTenFile = new JPanel();
-		pnTenFile.setBounds(23, 266, 446, 40);
+		pnTenFile.setBounds(23, 266, 467, 40);
 		pnTenFile.setLayout(null);
 		nullLayout.add(pnTenFile);
 
 		txtSourceFileName = new JTextField();
 		txtSourceFileName.setForeground(Color.RED);
 		txtSourceFileName.setFont(new Font("Times New Roman", Font.BOLD, 19));
-		txtSourceFileName.setBounds(212, 0, 222, 35);
+		txtSourceFileName.setBounds(212, 0, 243, 35);
 		pnTenFile.add(txtSourceFileName);
 		txtSourceFileName.setColumns(10);
 
@@ -233,12 +235,9 @@ public class frmMain implements ActionListener {
 		btnBrowseOutputTestCase.addActionListener(this);
 		btnBrowseInputTestCase.addActionListener(this);
 		btnBrowse.addActionListener(this);
-		chkChamNhieuNguoi.addActionListener(this);
 		chkFileSource.addActionListener(this);
-		chkChamMotBai.addActionListener(this);
 		chkMoiFileSourceCoThuMucRieng.addActionListener(this);
-		pnThuMuc.setVisible(false);
-		chkChamMotBai.setSelected(true);
+		
 
 		JLabel lblChnChcNng = new JLabel("CHỌN CHỨC NĂNG:");
 		lblChnChcNng.setForeground(new Color(255, 0, 255));
@@ -297,24 +296,24 @@ public class frmMain implements ActionListener {
 
 		chckbxC = new JCheckBox("C++");
 		chckbxC.setFont(new Font("Tahoma", Font.BOLD, 16));
-		chckbxC.setBounds(720, 61, 113, 25);
+		chckbxC.setBounds(341, 78, 113, 25);
 		nullLayout.add(chckbxC);
 
 		chckbxC_1 = new JCheckBox("C#");
 		chckbxC_1.setFont(new Font("Tahoma", Font.BOLD, 16));
-		chckbxC_1.setBounds(720, 91, 113, 25);
+		chckbxC_1.setBounds(452, 78, 113, 25);
 		nullLayout.add(chckbxC_1);
 
 		JLabel lblChnTrnhBin = new JLabel("CHỌN TRÌNH");
 		lblChnTrnhBin.setForeground(Color.BLUE);
 		lblChnTrnhBin.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblChnTrnhBin.setBounds(576, 55, 136, 32);
+		lblChnTrnhBin.setBounds(333, 37, 136, 32);
 		nullLayout.add(lblChnTrnhBin);
 
 		JLabel lblBinDch = new JLabel("BIÊN DỊCH");
 		lblBinDch.setForeground(Color.BLUE);
 		lblBinDch.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblBinDch.setBounds(593, 80, 119, 40);
+		lblBinDch.setBounds(470, 33, 119, 40);
 		nullLayout.add(lblBinDch);
 		btnTrolai.addActionListener(this);
 		btnXem.addActionListener(this);
@@ -325,7 +324,7 @@ public class frmMain implements ActionListener {
 		chckbxC.setSelected(true);
 
 
-		iCachChamBai = 1;
+		iCachChamBai = 2;
 		nonInput = true;
 		Compiller = 1;
 
@@ -373,44 +372,29 @@ public class frmMain implements ActionListener {
 		return;
 	}
 
-	private void chkChamNhieuNguoiClick()
-	{
-		if(chkChamNhieuNguoi.isSelected())
-		{
-			chkChamMotBai.setSelected(false);
-			pnThuMuc.setVisible(true);
-			chkMoiFileSourceCoThuMucRieng.setSelected(true);
+	
 
-		}
-		else
-		{
-			chkFileSource.setSelected(false);
-			chkFileSource.setSelected(false);
-			pnThuMuc.setVisible(false);
-			chkChamMotBai.setEnabled(true);
-
-		}
-
-		/*
-		PATH = new String[100];
-		LISTDIR ld = new LISTDIR();
-		PATH = ld.takeDirectoryTree(txtSourcePath.getText());
-
-		pnThuMuc.setEnabled(true);
-		 */
-		return;
-	}
 
 	private void chkFileSourceClick()
 	{
 		if(chkFileSource.isSelected())
 		{
+			
+			JOptionPane.showMessageDialog(null, 
+                    "Chọn thư mục chứa các source file cần chấm điểm. Hệ thống sẽ tự nhận diện tên", 
+                    "Thông báo", 
+                    JOptionPane.WARNING_MESSAGE);
+			
 			chkMoiFileSourceCoThuMucRieng.setSelected(false);
 			//txtSourceFileName.setEnabled(false);
-			txtSourceFileName.setText("TẤT CẢ FILE");
+			txtSourceFileName.setText("KHÔNG CẦN NHẬP TÊN");
 		}
 		else
 		{
+			JOptionPane.showMessageDialog(null, 
+                    "Chọn thư mục chứa các thư mục con chứa source", 
+                    "Thông báo", 
+                    JOptionPane.WARNING_MESSAGE);
 			chkMoiFileSourceCoThuMucRieng.setSelected(true);
 			//	txtSourceFileName.setEnabled(true);
 			txtSourceFileName.setText("");
@@ -419,33 +403,30 @@ public class frmMain implements ActionListener {
 	}
 
 
-	private void chkChamMotBaiClick()
-	{
-		if(chkChamMotBai.isSelected())
-		{
-			chkChamNhieuNguoi.setSelected(false);
-			chkChamNhieuNguoiClick();
-		}
-		else
-		{
-			chkChamNhieuNguoi.setSelected(true);
-			chkChamNhieuNguoiClick();
-		}
-	}
+	
 
 
 	private void chkMoiFileSourceCoThuMucRiengClick()
 	{
 		if(chkMoiFileSourceCoThuMucRieng.isSelected())
 		{
+			
+			JOptionPane.showMessageDialog(null, 
+                    "Chọn thư mục chứa các thư mục con chứa source", 
+                    "Thông báo", 
+                    JOptionPane.WARNING_MESSAGE);
 			txtSourceFileName.setText("");
 			chkFileSource.setSelected(false);
 
 		}
 		else
 		{
+			JOptionPane.showMessageDialog(null, 
+                    "Chọn thư mục chứa các source file cần chấm điểm. Hệ thống sẽ tự nhận diện tên", 
+                    "Thông báo", 
+                    JOptionPane.WARNING_MESSAGE);
 			chkFileSource.setEnabled(true);
-			txtSourceFileName.setText("TẤT CẢ FILE");
+			txtSourceFileName.setText("KHÔNG CẦN NHẬP TÊN");
 		}
 	}
 
@@ -474,27 +455,11 @@ public class frmMain implements ActionListener {
 			btnBrowseOutputTestCaseClick();
 			return;
 		}
-
-		// xử lý checkbox chấm nhiều người.
-		if(e.getSource() == chkChamNhieuNguoi) 
-		{
-			iCachChamBai = 2;
-			chkChamNhieuNguoiClick();
-			return;
-		}
 		// xử lý checkbox chỉ source file
 		if(e.getSource() == chkFileSource)
 		{
 			iCachChamBaiDetail = 1;
 			chkFileSourceClick();
-			return;
-		}
-
-		// xử lý checkbox chỉ chấm 1 bài
-		if(e.getSource() == chkChamMotBai)
-		{
-			iCachChamBai = 1;
-			chkChamMotBaiClick();
 			return;
 		}
 
@@ -514,10 +479,8 @@ public class frmMain implements ActionListener {
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null, 
-                        "Đang phát triển", 
-                        "Thông báo", 
-                        JOptionPane.WARNING_MESSAGE);
+				
+				btnChamBaiClick_1();
 
 			}
 
@@ -557,11 +520,13 @@ public class frmMain implements ActionListener {
 	{
 		if(chckbxC.isSelected())
 		{
+			TAIL = ".cpp";
 			Compiller = 1;
 			chckbxC_1.setSelected(false);
 		}
 		else
 		{
+			TAIL = ".cs";
 			Compiller = 2;
 			chckbxC_1.setSelected(true);
 		}
@@ -571,11 +536,19 @@ public class frmMain implements ActionListener {
 	{
 		if(chckbxC_1.isSelected())
 		{
+			
+			TAIL = ".cs";
 			Compiller = 2;
+			JOptionPane.showMessageDialog(null, 
+                    "Chạy chương trình với quyền administrator", 
+                    "Thông báo", 
+                    JOptionPane.WARNING_MESSAGE);
+			
 			chckbxC.setSelected(false);
 		}
 		else
 		{
+			TAIL = ".cpp";
 			Compiller = 1;
 			chckbxC.setSelected(true);
 		}
@@ -597,7 +570,7 @@ public class frmMain implements ActionListener {
 		lbDiem.setText("0/0");
 	}
 
-	private void excuteCommand(String otherCommand, boolean isFirstTime)
+	private void excuteCommand(String otherCommand, boolean isFirstTime) // chổ này mới execute.
 	{
 
 		ExecuteShellComand cmd = new ExecuteShellComand();
@@ -631,15 +604,15 @@ public class frmMain implements ActionListener {
 		//Source PATH la duong dan Thu MUC CHUA BAI CAN CHAM
 		
 		// tro toi thu muc chua .NET
-		strDirectToFoloder[1] =  "cd C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319";
+		strDirectToFoloder[1] =  "cd "+DotNetPath;
 
 		// Tối ưu hóa thời gian excute, built rồi thì ko built nữa
 		if(isFirstTime)
-	//		strDirectToFoloder[2] =  "csc "+txtSourcePath.getText() + ;
-		//else
+			strDirectToFoloder[2] =  "csc "+"\""+txtSourcePath.getText()+"\\"+ txtSourceFileName.getText() +"\"" +".cs"; // Cái này là build thành file EXE
+		else
 			strDirectToFoloder[2] ="";
 
-		strDirectToFoloder[3] = "\""  + txtSourceFileName.getText() +  "\""  + ".exe > " + "\""+ txtSourceFileName.getText() + "\"Output.txt";
+		strDirectToFoloder[3] = "\""  + txtSourceFileName.getText() +  "\""  + ".exe > " + "\""+ txtSourceFileName.getText() + "Output\".txt"; // cái này là xuất ra file
 
 		strDirectToFoloder[4] =otherCommand; // other command
 
@@ -778,7 +751,7 @@ public class frmMain implements ActionListener {
 
 				}
 
-				txtSourceFileName.setText("TẤT CẢ FILE");
+				txtSourceFileName.setText("KHÔNG CẦN NHẬP TÊN");
 				strBackupExcecuteResut = txtPaneExecuteResult.getText();
 
 			}
@@ -838,7 +811,199 @@ public class frmMain implements ActionListener {
 
 	}
 
+	
+	private void btnChamBaiClick_1()
+	{
 
+		txtPaneExecuteResult.setText("");
+
+		if(!txtInputTestCase.getText().trim().equals(""))
+		{
+			loadInputTestCase();
+
+		}
+		else
+		{
+			//Khi ko có nhập file input, input = null, nó sẽ bị lỗi
+			InputTestCase[0] = " ";
+			nLine = 1;
+		}
+
+		if(!txtOutputTestCase.getText().trim().equals(""))
+		{
+			loadOutPutTestCase();
+		}
+		else
+		{
+			OutputTestCase[0] =" ";
+			nLine = 1;
+		}
+
+		if(iCachChamBai == 1)
+		{
+
+			runChamBai_1();
+			// hiện ra màn hình
+			txtPaneExecuteResult.setText(Contents);
+			lbDiem.setText(String.valueOf(tempScore) +"/" + String.valueOf(nLine));
+		}
+		else
+		{
+
+			if(iCachChamBaiDetail == 1)
+			{
+				txtPaneExecuteResult.setText("");
+				// CHẤM NHIỀU NGƯỜI.
+
+				// TH1: Nhiều file nằm chung một thư mục.
+				// Đọc Danh sách ra
+				// đối tượng sử dụng:
+
+				//ExecuteReport chứa tất cả điểm của tất cả bài.
+				// Cấu trúc của executeReport là 1 mảng 2 chiều gồm n dòng và 3 cột.
+				// Cột đầu là lưu tên file CPP hoặc CS.
+				// Cột 2 là lưu điểm
+				// Cột 3 là cột để lưu kết quả.
+
+
+				//lấy danh sách tên source ra một mảng.
+				LISTDIR ld = new LISTDIR();
+				String [] DirPath = ld.takeDirectoryTree(txtSourcePath.getText(), TAIL);
+				int nDirPath  = ld.takenPath();
+
+				// Chuẩn hóa và đổi tên file.
+				// Lý do phải chuẩn hóa tên file là do nếu tên file có khoanrgc ách trình biên dịch sẽ không thể hiểu
+
+
+				ExecuteReport = new String [100][3];
+				// Duyệt toàn bộ danh sách source file
+				for(int  k= 0; k<nDirPath; k++)
+				{	
+					txtSourceFileName.setText(DirPath[k]);
+
+					runChamBai_1();
+
+					int strSize = txtSourceFileName.getText().length();
+					ExecuteReport[k][0] =  txtSourceFileName.getText()  ;
+					ExecuteReport[k][1] = Contents;
+					ExecuteReport[k][2] = String.valueOf(tempScore);
+					txtPaneExecuteResult.setText(  (txtPaneExecuteResult.getText()+ '\n' + "STT "+ String.valueOf(k+1)+ ": " + ExecuteReport[k][0] + " - " +
+							ExecuteReport[k][2] ).trim()+"/" + String.valueOf(nLine));
+
+
+				}
+
+				txtSourceFileName.setText("KHÔNG CẦN NHẬP TÊN");
+				strBackupExcecuteResut = txtPaneExecuteResult.getText();
+
+			}
+			else
+			{
+				// MỖI SOURCE FILE ĐỀU CÓ MỘT THƯ MỤC RIÊNG.
+
+				// Backup địa chỉ thư mục lớp
+				String backupSourceFolderLink = txtSourcePath.getText();
+
+
+
+				//Lấy danh sách tất cả các thư mục chứa thư mục source.
+
+				LISTDIR ldFolder = new LISTDIR();
+				String [] DirPath = ldFolder.takeDirectoryTree(txtSourcePath.getText(), "");
+				int nFolderDirPath  = ldFolder.takenPath();
+
+
+				//Sử dụng ExecuteReport lưu lại kết quả.
+				// Với cấu trúc: E[0] tên folder - Tên bài E[1] = kết quả E[2] = Điểm
+				
+				ExecuteReport = new String [100][3];
+				// Ứng với mỗi folder. 
+				//Sửa lại folderPath bằng cách cộng thêm vào tên folder đã lấy
+
+				for(int  i = 0; i<nFolderDirPath; i++)
+				{
+					// Set mọi thông số out - in
+					// Set đường link mới.
+					// Gọi chấm bài
+					String newPath = backupSourceFolderLink + "\\" + DirPath[i]; 
+					txtSourcePath.setText(newPath);
+					runChamBai_1();
+
+					int strSize = txtSourceFileName.getText().length();
+					ExecuteReport[i][0] =  txtSourceFileName.getText() + " - "+ DirPath[i]  ;
+					ExecuteReport[i][1] = Contents;
+					ExecuteReport[i][2] = String.valueOf(tempScore);
+
+					// In ra màn hình
+					txtPaneExecuteResult.setText( (txtPaneExecuteResult.getText()+ '\n' + "STT "+ String.valueOf(i+1) + ": "+  ExecuteReport[i][0] + " - " 
+							+ ExecuteReport[i][2] ).trim() +"/" + String.valueOf(nLine));
+
+				}
+
+				txtSourcePath.setText(backupSourceFolderLink);
+				strBackupExcecuteResut = txtPaneExecuteResult.getText();
+
+
+
+
+			}
+
+		}
+
+
+	}
+
+
+	private void runChamBai_1()
+	{
+		//ĐIỂM TẠM
+		tempScore = 0;
+
+
+		// Contents gốc
+		Contents ="";
+
+		// file được xuất ra sẽ có dạng tên + Output.txt
+		for(int i = 0; i<nLine; i++)
+		{
+
+			// khởi tạo executeResult
+			ExecuteResult = new String[100];
+
+			executeCommandWithDotNet(InputTestCase[i], isFirstExcute);
+			isFirstExcute = false;
+
+
+			//Đoạn này đọc dữ liệu từ file đã được tạo sau mỗi lần excute
+			ReadFile rf = new ReadFile();
+
+			// Biến này lấy lên được kết quả của mỗi lần execute
+			// đối với .NET là phải đi vào bên trong thư mục gốc của .NET để lấy file
+			String tempContents =rf.readTextFile(DotNetPath+"\\"+txtSourceFileName.getText()+"Output.txt").trim();
+			ExecuteResult[i] = tempContents.trim();
+
+			// Biến này ghi lại tất cả kết quả đã execute theo cách cộng dồn.
+			Contents +=tempContents;
+			Contents += '\n';
+
+			if(tempContents.trim().toString().equals(OutputTestCase[i].trim().toString()))
+			{
+				tempScore++;
+			}
+			else
+			{
+				System.out.println(tempContents + " && " +OutputTestCase[i]);
+			}
+
+
+		}
+
+		isFirstExcute = true;
+		// Sau khi chạy xong chương trình thì dừng luôn
+
+	}
+	
+	
 	public String chuanHoa(String str) {
 		str = str.trim();
 		str = str.replaceAll("\\s+", "");
