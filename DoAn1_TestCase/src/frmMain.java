@@ -29,17 +29,7 @@ public class frmMain implements ActionListener {
 
 
 	/*
-	 *	Em xin lỗi Thầy, em biết code ở project này dù em đã
-	 *	cố gắng comment cẩn thận, nhưng nhìn vào cũng rất rối.
-	 *	Em đã cố gắng làm cho clear nhất có thể. Nhưng khi viết
-	 *	tính năng mới. Em không sửa cái cũ mà chỉ dám viết thêm
-	 *	các function và khai báo thêm rất nhiều variables khác mà
-	 *	biết rằng nó dư thừa vì số lượng code xây dựng đã quá lớn
-	 *	em biết nếu e nhúng code mới vào cái project mà e đã viết 
-	 * 	cách đây 1 tháng nó sẽ error luôn mọi thứ.
-	 *	Em hứa, kết thúc project này, em sẽ cố gắng tối ưu code lại.
-	 *	Vì để đảm bảo project chạy tốt em đã làm hại đến sức khỏe của Thầy
-	 *	khi đọc code rồi. Hy vọng thầy giơ cao đánh khẽ.
+	 
 	 */
 
 	public String DotNetPath = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319";
@@ -196,12 +186,12 @@ public class frmMain implements ActionListener {
 		pnConfig.add(pnThuMuc);
 		pnThuMuc.setLayout(null);
 
-		chkFileSource = new JCheckBox("Chỉ File Source");
-		chkFileSource.setBounds(8, 0, 139, 25);
+		chkFileSource = new JCheckBox("Mỗi sinh viên chỉ có File Source");
+		chkFileSource.setBounds(8, 0, 276, 25);
 		pnThuMuc.add(chkFileSource);
 		chkFileSource.setFont(new Font("Times New Roman", Font.PLAIN, 17));
 
-		chkMoiFileSourceCoThuMucRieng = new JCheckBox("Mỗi File Source có thư mục riêng");
+		chkMoiFileSourceCoThuMucRieng = new JCheckBox("Mỗi sinh viên có thư mục riêng");
 		chkMoiFileSourceCoThuMucRieng.setBounds(8, 30, 259, 25);
 		pnThuMuc.add(chkMoiFileSourceCoThuMucRieng);
 		chkMoiFileSourceCoThuMucRieng.setFont(new Font("Times New Roman", Font.PLAIN, 17));
@@ -590,8 +580,6 @@ public class frmMain implements ActionListener {
 		strDirectToFoloder[4] =otherCommand; // other command
 
 		cmd.runCommand(strDirectToFoloder, 5);
-
-
 
 	}
 

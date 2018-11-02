@@ -18,6 +18,8 @@ public class ExecuteShellComand {
 	// gọi lệnh trong command promt
 	
 	
+	
+	//Chạy n lênh command trong mảng Command
 	public void runCommand(String[] strCommand, int numberOfCommand)
 	{
 		

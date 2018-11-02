@@ -1,5 +1,5 @@
 /*
- Cách lấy địa chỉ của thư mục/file được tham khảo từ:
+ Hướng dẫn lấy địa chỉ của thư mục/file được tham khảo và chỉnh sửa từ:
  https://www.youtube.com/watch?v=XXkq73u9Uqg
  */
 
